@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LoginApp</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login_page">LOGIN PAGE</string>
+    <string name="textview">TextView</string>
+    <string name="log_out">Log Out</string>
+    <string name="profile_setting">Profile Setting</string>
+    <string name="username_here">Username Here</string>
+    <string name="password_here">Password Here</string>
+    <string name="profile_site">Profile Site</string>
+    <string name="value_default">696</string>
+    <string name="tasks">Tasks</string>
+    <string name="new_task">New Task</string>
+    <string name="save">Save</string>
+</resources>
