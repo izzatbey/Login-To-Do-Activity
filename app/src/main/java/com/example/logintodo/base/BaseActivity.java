@@ -2,7 +2,6 @@ package com.example.logintodo.base;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,7 +13,7 @@ public abstract  class BaseActivity extends FragmentActivity implements Fragment
     protected BaseFragment currentFragment;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeView();
         initializeFragment();
@@ -23,10 +22,6 @@ public abstract  class BaseActivity extends FragmentActivity implements Fragment
     protected abstract void initializeFragment();
 
     protected abstract void initializeView();
-
-    public void setCurrentFragment(BaseFragment currentFragment){
-        setCurrentFragment(currentFragment, false);
-    }
 
     protected void setCurrentFragment(BaseFragment fragment, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();

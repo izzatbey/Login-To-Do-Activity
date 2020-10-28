@@ -4,23 +4,41 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/newTaskText"
+        android:id="@+id/newTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:hint="@string/new_task" />
+        android:hint="@string/new_title" />
+
+    <EditText
+        android:id="@+id/newDescText"
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newTitleText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="9dp"
+        android:background="@null"
+        android:hint="@string/new_task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <Button
         android:id="@+id/newTaskButton"
-        android:layout_width="wrap_content"
+        android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/newTaskText"
-        android:textSize="16sp"
+        android:layout_below="@id/newDescText"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
         android:text="@string/save"
         android:textAllCaps="false"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
 </RelativeLayout>

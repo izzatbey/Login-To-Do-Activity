@@ -5,10 +5,10 @@ import com.example.logintodo.base.BaseView;
 
 public interface ToDoContract {
     interface View extends BaseView<Presenter> {
-        void addTask();
+        void redirectToListTask();
     }
 
     interface Presenter extends BasePresenter {
-        void setType(String type);
+        void saveData(String title, String description);
     }
 }

@@ -17,10 +17,39 @@
             android:id="@+id/todoCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:buttonTint="@android:color/holo_blue_dark"
-            android:paddingStart="8dp"
-            tools:text="Go to the market and bring vegetables immediately today." />
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="false"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="161dp"
+            android:buttonTint="@color/myPrimary"
+            android:paddingStart="8dp" />
+
+        <TextView
+            android:id="@+id/tvTodolistTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="200dp"
+            android:text="@string/judul_todo_list"
+            android:textColor="@color/myPrimaryDark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTodolistDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTodolistTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/deskripsi_pekerjaan_yang_harus_anda_lakukan"
+            android:textColor="@color/myPrimaryDark" />
 
     </RelativeLayout>
 

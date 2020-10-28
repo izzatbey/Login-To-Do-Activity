@@ -1,6 +1,7 @@
 package com.example.logintodo.modul.ToDo;
 
 import android.content.Intent;
+import android.view.View;
 
 import com.example.logintodo.base.BaseFragmentHolderActivity;
 
@@ -9,17 +10,18 @@ import static com.example.logintodo.modul.Constants.TASK_TYPE;
 public class ToDoActivity extends BaseFragmentHolderActivity {
 
     ToDoFragment todoFragment;
+    private final int UPDATE_REQUEST = 2019;
 
     @Override
     protected void initializeFragment() {
         initializeView();
 
-        todoFragment = new ToDoFragment();
-        ToDoPresenter mPresent = new ToDoPresenter(todoFragment);
-        todoFragment.setPresenter(mPresent);
+        btBack.setVisibility(View.GONE);
+        btOptionMenu.setVisibility(View.GONE);
+//        ivIcon.setImageResource(R.drawable.....);
+        ivIcon.setVisibility(View.VISIBLE);
 
-        Intent intent = getIntent();
-        mPresent.setType(intent.getStringExtra(TASK_TYPE));
+        todoFragment = new ToDoFragment();
         setCurrentFragment(todoFragment, true);
 
     }

@@ -6,25 +6,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import androidx.annotation.NonNull;
+import android.widget.EditText;
 import androidx.annotation.Nullable;
 
 import com.example.logintodo.R;
 import com.example.logintodo.base.BaseFragment;
 import com.example.logintodo.modul.listTask.ListActivity;
-import com.google.android.material.textfield.TextInputEditText;
 
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
 
-    private TextInputEditText etEmail;
-    private TextInputEditText etPassword;
+    EditText etEmail;
+    EditText etPassword;
     Button btnLogin;
+
+    public LoginFragment() {
+
+    }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
         mPresenter = new LoginPresenter(this, requireContext());

@@ -13,5 +13,8 @@
     <string name="value_default">696</string>
     <string name="tasks">Tasks</string>
     <string name="new_task">New Task</string>
+    <string name="new_title">New Title</string>
     <string name="save">Save</string>
+    <string name="judul_todo_list">Judul Todo List</string>
+    <string name="deskripsi_pekerjaan_yang_harus_anda_lakukan">Deskripsi pekerjaan yang harus anda lakukan</string>
 </resources>

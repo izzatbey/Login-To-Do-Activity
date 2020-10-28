@@ -1,9 +1,10 @@
 package com.example.logintodo.modul.ToDo;
 
+import com.example.logintodo.data.model.Task;
+
 public class ToDoPresenter implements ToDoContract.Presenter {
 
     private final ToDoContract.View view;
-    private String todoType;
 
     public ToDoPresenter(ToDoContract.View view) {
         this.view = view;
@@ -11,11 +12,13 @@ public class ToDoPresenter implements ToDoContract.Presenter {
 
     @Override
     public void start() {
-            view.addTask();
     }
 
     @Override
-    public void setType(String todoType) {
-        this.todoType = todoType;
+    public void saveData(String title, String description) {
+        Task newTask = new Task("3", title, description);
+        //save new task
+        //then go back to task list
+        view.redirectToListTask();
     }
 }

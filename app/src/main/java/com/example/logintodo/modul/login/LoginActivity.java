@@ -7,7 +7,7 @@ import com.example.logintodo.base.BaseFragmentHolderActivity;
 
 public class LoginActivity extends BaseFragmentHolderActivity {
     LoginFragment loginFragment;
-
+    private final int UPDATE_REQUEST = 2019;
 
     @Override
     protected void initializeFragment() {

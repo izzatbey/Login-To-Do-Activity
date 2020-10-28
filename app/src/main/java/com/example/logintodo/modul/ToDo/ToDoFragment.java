@@ -6,9 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.logintodo.base.BaseFragment;
@@ -17,32 +16,53 @@ import com.example.logintodo.modul.listTask.ListActivity;
 
 public class ToDoFragment extends BaseFragment<ToDoActivity, ToDoContract.Presenter> implements ToDoContract.View {
 
+    EditText etToDoTitle;
+    EditText etToDoDescription;
+    Button btnSave;
+
+    public ToDoFragment() {
+
+    }
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.new_task, container, false);
+        mPresenter = new ToDoPresenter(this);
         mPresenter.start();
+
+        etToDoTitle = fragmentView.findViewById(R.id.newTitleText);
+        etToDoDescription = fragmentView.findViewById(R.id.newDescText);
+        btnSave = fragmentView.findViewById(R.id.newTaskButton);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setBtSaveClick();
+            }
+        });
+
+        setTitle("Add New Task");
 
         return fragmentView;
     }
 
-    @Override
-    public void addTask() {
-        final Button taskAddButton = fragmentView.findViewById(R.id.newTaskButton);
-        taskAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, ListActivity.class);
-                startActivity(intent);
-                activity.finish();
-            }
-        });
-        taskAddButton.setVisibility(View.VISIBLE);
+    public void setBtSaveClick(){
+        String title = etToDoTitle.getText().toString();
+        String description = etToDoDescription.getText().toString();
+        mPresenter.saveData(title,description);
     }
+
 
     @Override
     public void setPresenter(ToDoContract.Presenter presenter) {
         this.mPresenter = presenter;
+    }
+
+    @Override
+    public void redirectToListTask() {
+        Intent intent = new Intent(activity, ListActivity.class);
+        startActivity(intent);
+        activity.finish();
     }
 }
