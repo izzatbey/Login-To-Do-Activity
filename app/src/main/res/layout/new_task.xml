@@ -27,7 +27,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <Button
-        android:id="@+id/newTaskButton"
+        android:id="@+id/btn_save"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/newDescText"

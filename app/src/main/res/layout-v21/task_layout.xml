@@ -41,15 +41,25 @@
 
         <TextView
             android:id="@+id/tvTodolistDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="218dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvTodolistTitle"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="-1dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="87dp"
             android:text="@string/deskripsi_pekerjaan_yang_harus_anda_lakukan"
             android:textColor="@color/myPrimaryDark" />
+
+        <Button
+            android:id="@+id/btn_share"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="285dp"
+            android:layout_marginEnd="5dp"
+            android:text="Share" />
 
     </RelativeLayout>
 

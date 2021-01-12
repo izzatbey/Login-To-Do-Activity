@@ -13,12 +13,13 @@ public class ListActivity extends BaseFragmentHolderActivity {
     protected void initializeFragment() {
         initializeView();
 
-        btBack.setVisibility(View.GONE);
+        btBack.setVisibility(View.VISIBLE);
         btOptionMenu.setVisibility(View.GONE);
 //        ivIcon.setImageResource(R.drawable.....);
         ivIcon.setVisibility(View.VISIBLE);
 
         listFragment = new ListFragment();
+        listFragment.setBtBack(btBack);
         setCurrentFragment(listFragment, false);
     }
 }

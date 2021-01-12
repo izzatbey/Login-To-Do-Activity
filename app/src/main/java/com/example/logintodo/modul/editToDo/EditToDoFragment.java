@@ -2,57 +2,55 @@ package com.example.logintodo.modul.editToDo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import androidx.annotation.Nullable;
+import android.widget.Toast;
 
 import com.example.logintodo.R;
 import com.example.logintodo.base.BaseFragment;
 import com.example.logintodo.data.model.Task;
+import com.example.logintodo.data.source.local.TaskTableHandler;
+import com.example.logintodo.data.source.session.TaskSessionRepository;
 import com.example.logintodo.modul.listTask.ListActivity;
 
 public class EditToDoFragment extends BaseFragment<EditToDoActivity, EditToDoContract.Presenter> implements EditToDoContract.View {
 
     EditText etToDoTitle;
     EditText etToDoDescription;
-    Button btnSave;
+    CheckBox textBoxComplete;
+    Button btnEdit;
+    Button btnDelete;
     String id;
 
     public EditToDoFragment() {
 
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        fragmentView = inflater.inflate(R.layout.fragment_todolist, container, false);
-        mPresenter = new EditToDoPresenter(this);
+        fragmentView = inflater.inflate(R.layout.edit_task, container, false);
+        mPresenter = new EditToDoPresenter(this, new TaskTableHandler(getActivity()), new TaskSessionRepository(getActivity()));
         mPresenter.start();
 
         etToDoTitle = fragmentView.findViewById(R.id.newTitleText);
         etToDoDescription = fragmentView.findViewById(R.id.newDescText);
-        btnSave = fragmentView.findViewById(R.id.newTaskButton);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setBtSaveClick();
-            }
-        });
+        textBoxComplete = fragmentView.findViewById(R.id.todoCheckBox);
+        btnEdit = fragmentView.findViewById(R.id.btn_edit);
+        btnDelete = fragmentView.findViewById(R.id.btn_delete);
 
-        setTitle("Add New Task");
+        btnEdit.setText("Update");
+
+        setTitle("Edit Task");
         mPresenter.loadData(this.id);
 
-        return fragmentView;
-    }
 
-    public void setBtSaveClick(){
-        String title = etToDoTitle.getText().toString();
-        String description = etToDoDescription.getText().toString();
-        mPresenter.saveData(title,description);
+        return fragmentView;
     }
 
     @Override
@@ -70,13 +68,36 @@ public class EditToDoFragment extends BaseFragment<EditToDoActivity, EditToDoCon
     @Override
     public void showData(Task task) {
         this.etToDoTitle.setText(task.getTitle());
+        Log.d("tag",task.getDescription());
         this.etToDoDescription.setText(task.getDescription());
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = etToDoTitle.getText().toString();
+                String description = etToDoDescription.getText().toString();
+                Integer isComplete = textBoxComplete.isChecked() ? 1 : 0;
+
+                task.setTitle(title);
+                task.setDescription(description);
+                mPresenter.saveData(task);
+                //Toast.makeText(activity, title + " " + description, Toast.LENGTH_LONG).show();
+                redirectToTaskList();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mPresenter.deleteData(Integer.parseInt(task.getId()));
+                redirectToTaskList();
+            }
+        });
     }
 
     @Override
     public void setId(String id) {
         this.id=id;
     }
-
 }
-

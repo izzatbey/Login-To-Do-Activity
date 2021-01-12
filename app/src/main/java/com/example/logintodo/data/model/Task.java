@@ -6,11 +6,19 @@ public class Task extends BaseModel {
     private String id;
     private String title;
     private String description;
+    private Integer isComplete = 0;
 
-    public Task(String id, String title, String description) {
+    public Task(String id, String title, String description, Integer isComplete) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.isComplete = isComplete;
+    }
+
+    public Task(String title, String description, Integer isComplete) {
+        this.title = title;
+        this.description = description;
+        this.isComplete = isComplete;
     }
 
     public String getId() {
@@ -35,6 +43,14 @@ public class Task extends BaseModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getIsComplete() {
+        return isComplete;
+    }
+
+    public void setIsComplete(Integer isComplete) {
+        this.isComplete = isComplete;
     }
 
 }

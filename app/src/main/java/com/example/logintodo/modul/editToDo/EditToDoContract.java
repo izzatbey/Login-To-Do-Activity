@@ -13,7 +13,8 @@ public interface EditToDoContract {
     }
 
     interface Presenter extends BasePresenter {
-        void saveData(String title, String description);
+        void saveData(Task task);
         void loadData(String id);
+        void deleteData(int id);
     }
 }
